@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light" style="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3년차 직장인의 성장 밸런스 휠</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        padding-bottom: 80px;
+      }
+
+      .section {
+        margin-bottom: 2rem;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .intro-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 15px;
+        justify-content: center;
+      }
+
+      .score-button {
+        min-width: 40px;
+        height: 40px;
+        border: 2px solid #dee2e6;
+        background-color: #f8f9fa;
+        color: #495057;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        touch-action: manipulation;
+      }
+
+      .score-button:hover {
+        border-color: #007bff;
+        background-color: #e7f3ff;
+      }
+
+      .score-button.selected {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+      }
+
+      @media (max-width: 576px) {
+        .score-button {
+          min-width: 35px;
+          height: 35px;
+          font-size: 0.9rem;
+        }
+        .nav-link {
+          font-size: 0.8rem;
+          padding: 6px 8px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      .question-text {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+      }
+
+      .nav-pills {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 1000;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        padding: 8px;
+        font-size: 0.9rem;
+      }
+
+      .btn-lg {
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+      }
+
+      .result-section {
+        display: none;
+      }
+
+      .canvas-container {
+        margin: 20px auto;
+        max-width: 300px;
+        height: 300px;
+        position: relative;
+      }
+
+      .table-responsive {
+        font-size: 0.9rem;
+      }
+
+      .interpretation {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+      }
+
+      .fixed-bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        z-index: 1000;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .section-score {
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body style="">
+    <div class="container">
+      <h1 class="text-center my-4">3년차 직장인의 성장 밸런스 휠</h1>
+      <h5 class="text-center text-muted mb-4">입사 후 내가 얻은 것은?</h5>
+
+      <ul class="nav nav-pills nav-fill mb-3" id="pillNav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#intro">소개</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#part1">업무 전문성</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#part2">조직 내 관계</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#part3">삶의 균형</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#result">결과</a>
+        </li>
+      </ul>
+
+      <div id="intro" class="section" style="display: block;">
+        <div class="intro-section">
+          <h2>자기 진단 도구 소개</h2>
+          <p>
+            이 자기 진단 도구는 3년차 직장인이 지금까지의 성장을 객관적으로 돌아보고, 향후 발전 방향을 모색하는데 도움을
+            주기 위해 설계되었습니다. 업무 전문성, 조직 내 관계, 삶의 균형이라는 세 가지 축으로 구성된 '성장 밸런스
+            휠'을 통해 자신의 현재 위치를 파악하고 균형적인 성장을 계획할 수 있습니다.
+          </p>
+
+          <p>
+            각 문항에 1~10점 척도로 솔직하게 응답하시고, 결과를 토대로 자신의 강점과 개발 필요 영역을 파악하시기
+            바랍니다. 모든 영역에서 높은 점수를 받는 것보다, 자신의 현재 상태를 정확히 인식하는 것이 더 중요합니다.
+          </p>
+
+          <div class="mt-3 mb-2"><strong>세 가지 성장 축 설명:</strong></div>
+          <ul>
+            <li>
+              <strong>업무 전문성:</strong> 직무 관련 지식과 기술, 업무 수행 능력, 전문가로서의 성장 가능성을
+              의미합니다.
+            </li>
+            <li>
+              <strong>조직 내 관계:</strong> 동료, 상사, 후배와의 관계 및 소통, 조직 내 네트워크와 협업 능력을
+              의미합니다.
+            </li>
+            <li>
+              <strong>삶의 균형:</strong> 경제적 안정, 일과 삶의 균형, 자기계발과 취미 활동, 미래에 대한 준비를
+              의미합니다.
+            </li>
+          </ul>
+        </div>
+
+        <button class="btn btn-primary btn-lg mt-4" onclick="scrollToSection('part1')">시작하기</button>
+      </div>
+
+      <!-- 업무 전문성 진단 -->
+      <div id="part1" class="section" style="display: none;">
+        <div class="section-title">
+          <h2>1. 업무 전문성 진단</h2>
+          <div class="section-score" id="part1-score">5.0</div>
+        </div>
+
+        <div id="questions-part1">
+          <!-- 업무 전문성 문항 -->
+          <div class="question-item">
+            <p class="question-text">1. 입사 초기와 비교했을 때, 업무 관련 기술과 지식이 체계적으로 향상되었다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_1" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_1" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_1" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_1" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_1" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_1" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_1" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_1" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_1" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_1" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">2. 나는 내 직무의 전체 프로세스와 조직 내 역할을 명확히 이해하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_2" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_2" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_2" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_2" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_2" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_2" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_2" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_2" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_2" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_2" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">3. 업무 수행 중 발생하는 문제를 독자적으로 해결할 수 있는 능력이 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_3" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_3" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_3" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_3" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_3" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_3" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_3" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_3" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_3" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_3" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">4. 현재 직무에서 더 성장할 수 있는 분명한 경력 경로와 목표가 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_4" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_4" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_4" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_4" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_4" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_4" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_4" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_4" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_4" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_4" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">5. 나의 전문성과 업무 능력을 동료와 상사로부터 인정받고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_5" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_5" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_5" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_5" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_5" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_5" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_5" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_5" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_5" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_5" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">6. 내 분야의 최신 트렌드와 기술 발전을 지속적으로 학습하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_6" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_6" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_6" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_6" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_6" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_6" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_6" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_6" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_6" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_6" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">7. 업무 관련 의사결정 시 데이터와 경험을 바탕으로 합리적인 판단을 내릴 수 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_7" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_7" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_7" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_7" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_7" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_7" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_7" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_7" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_7" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_7" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">8. 내 분야에서 전문가로 성장하기 위한 구체적인 학습 계획이 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_8" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_8" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_8" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_8" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_8" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_8" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_8" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_8" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_8" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_8" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">9. 내 업무 영역 외에도 관련 분야에 대한 지식을 넓히고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_9" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_9" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_9" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_9" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_9" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_9" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_9" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_9" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_9" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_9" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">
+              10. 나는 내 업무 분야에서 효율성과 생산성을 높이기 위한 방법을 지속적으로 개선하고 있다.
+            </p>
+            <div class="button-container">
+              <button class="score-button" data-question="q1_10" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q1_10" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q1_10" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q1_10" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q1_10" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q1_10" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q1_10" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q1_10" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q1_10" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q1_10" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-secondary" onclick="scrollToSection('intro')">이전</button>
+          <button class="btn btn-primary" onclick="scrollToSection('part2')">다음</button>
+        </div>
+      </div>
+
+      <!-- 조직 내 관계 진단 -->
+      <div id="part2" class="section" style="display: none;">
+        <div class="section-title">
+          <h2>2. 조직 내 관계 진단</h2>
+          <div class="section-score" id="part2-score">5.0</div>
+        </div>
+
+        <div id="questions-part2">
+          <!-- 조직 내 관계 문항 -->
+          <div class="question-item">
+            <p class="question-text">1. 상사, 동료, 후배들과 원활한 관계를 유지하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_1" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_1" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_1" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_1" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_1" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_1" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_1" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_1" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_1" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_1" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">2. 업무와 관련된 의견이나 피드백을 적절하게 전달하고 수용할 수 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_2" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_2" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_2" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_2" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_2" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_2" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_2" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_2" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_2" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_2" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">3. 팀 프로젝트나 협업 상황에서 효과적인 역할을 수행한다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_3" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_3" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_3" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_3" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_3" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_3" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_3" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_3" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_3" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_3" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">4. 업무에 도움이 되는 조직 내 인적 네트워크를 형성하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_4" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_4" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_4" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_4" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_4" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_4" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_4" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_4" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_4" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_4" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">5. 조직의 일원으로서 소속감과 주인의식을 가지고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_5" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_5" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_5" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_5" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_5" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_5" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_5" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_5" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_5" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_5" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">6. 상사와 동료들에게 필요한 도움을 요청하고 적절한 지원을 받을 수 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_6" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_6" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_6" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_6" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_6" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_6" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_6" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_6" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_6" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_6" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">7. 팀 내 갈등 상황에서 합리적인 해결책을 찾아 조정할 수 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_7" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_7" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_7" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_7" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_7" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_7" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_7" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_7" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_7" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_7" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">8. 다양한 부서와 협업하는 과정에서 효과적으로 의사소통할 수 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_8" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_8" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_8" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_8" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_8" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_8" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_8" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_8" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_8" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_8" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">9. 회사의 비전과 가치에 공감하고 이를 업무에 반영하려 노력한다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_9" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_9" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_9" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_9" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_9" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_9" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_9" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_9" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_9" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_9" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">10. 업무 외적인 사내 활동이나 모임에 적극적으로 참여한다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q2_10" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q2_10" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q2_10" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q2_10" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q2_10" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q2_10" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q2_10" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q2_10" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q2_10" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q2_10" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-secondary" onclick="scrollToSection('part1')">이전</button>
+          <button class="btn btn-primary" onclick="scrollToSection('part3')">다음</button>
+        </div>
+      </div>
+
+      <!-- 삶의 균형 진단 -->
+      <div id="part3" class="section" style="display: none;">
+        <div class="section-title">
+          <h2>3. 삶의 균형 진단</h2>
+          <div class="section-score" id="part3-score">5.0</div>
+        </div>
+
+        <div id="questions-part3">
+          <!-- 삶의 균형 문항 -->
+          <div class="question-item">
+            <p class="question-text">1. 직장 생활을 통해 얻은 경제적 안정감에 만족한다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_1" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_1" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_1" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_1" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_1" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_1" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_1" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_1" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_1" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_1" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">2. 일과 개인 생활 사이에 건강한 균형을 유지하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_2" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_2" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_2" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_2" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_2" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_2" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_2" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_2" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_2" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_2" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">3. 나만의 취미나 여가 활동을 통해 스트레스를 건강하게 해소하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_3" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_3" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_3" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_3" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_3" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_3" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_3" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_3" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_3" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_3" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">4. 직무 외 자기계발이나 학습을 꾸준히 실천하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_4" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_4" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_4" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_4" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_4" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_4" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_4" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_4" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_4" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_4" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">5. 미래를 위한 재테크 계획과 실행이 체계적으로 이루어지고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_5" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_5" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_5" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_5" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_5" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_5" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_5" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_5" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_5" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_5" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">6. 규칙적인 운동과 건강한 식습관으로 신체적 건강을 유지하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_6" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_6" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_6" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_6" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_6" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_6" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_6" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_6" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_6" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_6" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">7. 가족, 친구 등 개인적인 인간관계에 충분한 시간과 에너지를 투자하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_7" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_7" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_7" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_7" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_7" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_7" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_7" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_7" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_7" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_7" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">8. 직장에서의 스트레스나 부담감을 효과적으로 관리하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_8" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_8" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_8" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_8" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_8" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_8" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_8" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_8" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_8" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_8" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">9. 개인적인 성취와 성장을 위한 중장기적인 목표가 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_9" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_9" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_9" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_9" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_9" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_9" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_9" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_9" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_9" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_9" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+
+          <div class="question-item">
+            <p class="question-text">10. 나만의 시간을 확보하고 자기성찰을 통해 정신적 건강을 유지하고 있다.</p>
+            <div class="button-container">
+              <button class="score-button" data-question="q3_10" data-value="1" onclick="selectScore(this)">1</button>
+              <button class="score-button" data-question="q3_10" data-value="2" onclick="selectScore(this)">2</button>
+              <button class="score-button" data-question="q3_10" data-value="3" onclick="selectScore(this)">3</button>
+              <button class="score-button" data-question="q3_10" data-value="4" onclick="selectScore(this)">4</button>
+              <button class="score-button selected" data-question="q3_10" data-value="5" onclick="selectScore(this)">5</button>
+              <button class="score-button" data-question="q3_10" data-value="6" onclick="selectScore(this)">6</button>
+              <button class="score-button" data-question="q3_10" data-value="7" onclick="selectScore(this)">7</button>
+              <button class="score-button" data-question="q3_10" data-value="8" onclick="selectScore(this)">8</button>
+              <button class="score-button" data-question="q3_10" data-value="9" onclick="selectScore(this)">9</button>
+              <button class="score-button" data-question="q3_10" data-value="10" onclick="selectScore(this)">10</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-secondary" onclick="scrollToSection('part2')">이전</button>
+          <button class="btn btn-success btn-lg" onclick="showResults()">결과 보기</button>
+        </div>
+      </div>
+
+      <!-- 결과 페이지 -->
+      <div id="result" class="section result-section" style="display: none;">
+        <h2 class="mb-4">나의 성장 밸런스 휠 결과</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="canvas-container">
+              <canvas id="balanceWheelChart" width="300" height="300" style="display: block; box-sizing: border-box; height: 300px; width: 300px;"></canvas>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>영역</th>
+                  <th>평균 점수</th>
+                  <th>수준</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>업무 전문성</td>
+                  <td id="avg-part1">5.0</td>
+                  <td id="level-part1">중급</td>
+                </tr>
+                <tr>
+                  <td>조직 내 관계</td>
+                  <td id="avg-part2">5.0</td>
+                  <td id="level-part2">협업형</td>
+                </tr>
+                <tr>
+                  <td>삶의 균형</td>
+                  <td id="avg-part3">5.0</td>
+                  <td id="level-part3">조절 중</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="interpretation">
+          <h3>결과 해석</h3>
+          <div id="result-interpretation"><p><strong>균형 잡힌 중간 수준</strong>의 성장을 이루고 있습니다. 균형은 좋지만, 이제는 각 영역에서 더 높은 수준으로 도약하기 위한 심화 발전이 필요한 시점입니다.</p></div>
+        </div>
+
+        <h3 class="mt-4">영역별 해석</h3>
+
+        <div class="accordion" id="interpretationAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false">
+                업무 전문성 해석
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#interpretationAccordion" style="">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody><tr>
+                      <th>1-3점</th>
+                      <td>
+                        아직 업무 파악과 전문성 개발이 필요한 단계입니다. 부족한 영역을 파악하고 집중적인 학습이
+                        필요합니다.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>4-7점</th>
+                      <td>
+                        기본적인 업무 능력은 갖추었으나 심화 역량 개발이 필요합니다. 특정 분야에서의 전문성을 키우는 데
+                        집중하세요.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>8-10점</th>
+                      <td>
+                        업무에 대한 높은 이해도와 전문성을 갖추고 있습니다. 이제는 지식을 공유하고 후배를 육성하는
+                        리더십을 발휘할 때입니다.
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true">
+                조직 내 관계 해석
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#interpretationAccordion" style="">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody><tr>
+                      <th>1-3점</th>
+                      <td>
+                        조직 내에서 다소 고립되어 있는 상태입니다. 소통 방식을 점검하고 적극적으로 관계 형성을 시도해
+                        보세요.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>4-7점</th>
+                      <td>
+                        기본적인 업무 관계는 형성되었으나, 더 깊고 폭넓은 네트워크 형성이 필요합니다. 다양한 부서와의
+                        교류를 시도해 보세요.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>8-10점</th>
+                      <td>
+                        조직 내에서 신뢰받는 구성원으로 자리잡았습니다. 이제는 멘토로서 또는 팀의 연결고리 역할을 담당할
+                        수 있습니다.
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false">
+                삶의 균형 해석
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#interpretationAccordion">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody><tr>
+                      <th>1-3점</th>
+                      <td>
+                        일과 삶의 불균형이 심한 상태입니다. 우선순위 재조정과 경계 설정이 필요합니다. 작은 취미부터
+                        시작해 보세요.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>4-7점</th>
+                      <td>
+                        어느 정도 균형을 찾아가는 중입니다. 일상에서 소소한 만족을 느끼고 있으나, 더 체계적인 삶의
+                        설계가 필요합니다.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>8-10점</th>
+                      <td>
+                        일과 삶의 균형이 잘 잡혀 있습니다. 이제는 장기적인 관점에서 삶의 질을 더 높이고 미래를 준비할
+                        때입니다.
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false">
+                밸런스 휠 패턴 해석
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#interpretationAccordion">
+              <div class="accordion-body">
+                <p><strong>균형적 성장형 (세 축이 모두 비슷한 점수)</strong></p>
+                <p>
+                  전반적으로 균형 잡힌 성장을 이루고 있습니다. 현재의 균형을 유지하면서 각 영역을 함께 발전시키는 전략이
+                  효과적입니다.
+                </p>
+
+                <p><strong>업무 중심형 (업무 전문성 점수가 가장 높음)</strong></p>
+                <p>
+                  직무 역량은 뛰어나지만 관계나 삶의 균형이 부족할 수 있습니다. 업무 외적인 부분에 관심을 기울여 보세요.
+                </p>
+
+                <p><strong>관계 중심형 (조직 내 관계 점수가 가장 높음)</strong></p>
+                <p>
+                  좋은 대인관계를 바탕으로 조직 내 적응을 잘 하고 있으나, 업무 전문성이나 개인 삶의 영역을 더 발전시킬
+                  필요가 있습니다.
+                </p>
+
+                <p><strong>삶의 질 중심형 (삶의 균형 점수가 가장 높음)</strong></p>
+                <p>개인 생활은 만족스럽지만, 직무 역량이나 조직 내 영향력을 키우는 데 더 관심을 기울이면 좋겠습니다.</p>
+
+                <p><strong>발전 도약기 (모든 점수가 낮은 경우)</strong></p>
+                <p>
+                  아직 자리를 잡아가는 과정에 있습니다. 너무 자책하지 말고, 가장 시급한 영역부터 우선순위를 정해 집중해
+                  보세요.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5">
+          <button class="btn btn-secondary" onclick="scrollToSection('part3')">이전</button>
+          <button class="btn btn-primary" onclick="saveResults()">결과 저장하기</button>
+        </div>
+      </div>
+
+      <div class="fixed-bottom-bar" id="progress-bar" style="display: none;">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;" id="total-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // 점수 선택 함수
+      function selectScore(button) {
+        const questionId = button.getAttribute('data-question');
+        const value = button.getAttribute('data-value');
+        
+        // 같은 질문의 다른 버튼들에서 selected 클래스 제거
+        document.querySelectorAll(`[data-question="${questionId}"]`).forEach(btn => {
+          btn.classList.remove('selected');
+        });
+        
+        // 선택된 버튼에 selected 클래스 추가
+        button.classList.add('selected');
+        
+        updateSectionScores();
+        updateTotalProgress();
+      }
+
+      // 섹션별 평균 점수 계산
+      function updateSectionScores() {
+        const sections = ['part1', 'part2', 'part3'];
+
+        sections.forEach((section) => {
+          let total = 0;
+          let count = 0;
+
+          // 해당 섹션의 모든 선택된 버튼 값을 합산
+          document.querySelectorAll(`#${section} .score-button.selected`).forEach((button) => {
+            total += parseInt(button.getAttribute('data-value'));
+            count++;
+          });
+
+          // 평균 계산
+          const average = count > 0 ? (total / count).toFixed(1) : 0;
+
+          // 섹션 점수 표시 업데이트
+          document.getElementById(`${section}-score`).textContent = average;
+        });
+      }
+
+      // 총 진행도 업데이트
+      function updateTotalProgress() {
+        const totalQuestions = document.querySelectorAll('.button-container').length;
+        let answeredCount = 0;
+
+        // 선택된 버튼이 있는 질문 개수 세기
+        document.querySelectorAll('.button-container').forEach((container) => {
+          const selectedButton = container.querySelector('.score-button.selected');
+          if (selectedButton && selectedButton.getAttribute('data-value') !== '5') {
+            answeredCount++;
+          }
+        });
+
+        // 진행률 계산 및 업데이트
+        const progressPercentage = (answeredCount / totalQuestions) * 100;
+        document.getElementById('total-progress').style.width = `${progressPercentage}%`;
+      }
+
+      // 특정 섹션으로 스크롤
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+
+        // 현재 활성화된 탭 변경
+        document.querySelectorAll('#pillNav .nav-link').forEach((link) => {
+          link.classList.remove('active');
+        });
+
+        document.querySelector(`#pillNav .nav-link[href="#${sectionId}"]`).classList.add('active');
+
+        // 모든 섹션 숨기기
+        document.querySelectorAll('.section').forEach((s) => {
+          s.style.display = 'none';
+        });
+
+        // 선택한 섹션 표시
+        section.style.display = 'block';
+
+        // 상단으로 스크롤
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
+
+      // 결과 보기
+      function showResults() {
+        // 결과 탭으로 이동
+        scrollToSection('result');
+
+        // 각 영역 평균 점수 계산 및 표시
+        const part1Avg = document.getElementById('part1-score').textContent;
+        const part2Avg = document.getElementById('part2-score').textContent;
+        const part3Avg = document.getElementById('part3-score').textContent;
+
+        document.getElementById('avg-part1').textContent = part1Avg;
+        document.getElementById('avg-part2').textContent = part2Avg;
+        document.getElementById('avg-part3').textContent = part3Avg;
+
+        // 수준 평가
+        document.getElementById('level-part1').textContent = getLevel(part1Avg, 1);
+        document.getElementById('level-part2').textContent = getLevel(part2Avg, 2);
+        document.getElementById('level-part3').textContent = getLevel(part3Avg, 3);
+
+        // 결과 해석 생성
+        generateInterpretation(part1Avg, part2Avg, part3Avg);
+
+        // 차트 생성
+        createBalanceWheelChart(part1Avg, part2Avg, part3Avg);
+
+        // 결과 섹션 표시
+        document.querySelector('.result-section').style.display = 'block';
+
+        // 진행 표시줄 숨기기
+        document.getElementById('progress-bar').style.display = 'none';
+      }
+
+      // 수준 평가 함수
+      function getLevel(score, part) {
+        const numScore = parseFloat(score);
+
+        if (numScore >= 1 && numScore <= 3) {
+          if (part === 1) return '초급';
+          if (part === 2) return '고립형';
+          if (part === 3) return '불균형';
+        } else if (numScore > 3 && numScore <= 7) {
+          if (part === 1) return '중급';
+          if (part === 2) return '협업형';
+          if (part === 3) return '조절 중';
+        } else if (numScore > 7 && numScore <= 10) {
+          if (part === 1) return '고급';
+          if (part === 2) return '네트워크형';
+          if (part === 3) return '균형 잡힘';
+        } else {
+          return '-';
+        }
+      }
+
+      // 결과 해석 생성
+      function generateInterpretation(part1, part2, part3) {
+        const part1Score = parseFloat(part1);
+        const part2Score = parseFloat(part2);
+        const part3Score = parseFloat(part3);
+
+        let interpretation = '';
+
+        // 전체적인 균형 판단
+        const scores = [part1Score, part2Score, part3Score];
+        const max = Math.max(...scores);
+        const min = Math.min(...scores);
+        const diff = max - min;
+
+        if (diff <= 2) {
+          // 균형 잡힌 경우
+          const avgScore = (part1Score + part2Score + part3Score) / 3;
+
+          if (avgScore <= 3) {
+            interpretation =
+              '<p>전반적으로 <strong>고른 분포</strong>를 보이고 있지만, <strong>모든 영역에서 낮은 점수</strong>를 보이고 있습니다. 지금은 발전을 위한 초기 단계로, 세 영역 모두에서 체계적인 성장 계획이 필요합니다.</p>';
+          } else if (avgScore <= 7) {
+            interpretation =
+              '<p><strong>균형 잡힌 중간 수준</strong>의 성장을 이루고 있습니다. 균형은 좋지만, 이제는 각 영역에서 더 높은 수준으로 도약하기 위한 심화 발전이 필요한 시점입니다.</p>';
+          } else {
+            interpretation =
+              '<p>축하합니다! <strong>균형적이면서도 높은 수준</strong>의 성장을 이루었습니다. 이제는 현재의 균형을 유지하면서 자신만의 독보적인 전문성과 영향력을 키워나갈 때입니다.</p>';
+          }
+        } else {
+          // 불균형한 경우
+          if (part1Score === max) {
+            interpretation =
+              '<p><strong>업무 전문성</strong>이 가장 높게 나타나는 <strong>업무 중심형</strong> 패턴입니다. 직무 역량은 뛰어나지만, 조직 내 관계나 개인 삶의 영역에서 균형을 찾을 필요가 있습니다.</p>';
+          } else if (part2Score === max) {
+            interpretation =
+              '<p><strong>조직 내 관계</strong> 영역이 가장 발달한 <strong>관계 중심형</strong> 패턴입니다. 사람들과의 관계는 원활하지만, 업무 전문성을 키우고 개인적인 삶의 영역에도 관심을 가질 필요가 있습니다.</p>';
+          } else {
+            interpretation =
+              '<p><strong>삶의 균형</strong> 영역이 가장 높은 <strong>삶의 질 중심형</strong> 패턴입니다. 개인 생활은 만족스럽지만, 업무 전문성과 조직 내 관계 형성에 더 관심을 기울이면 전반적인 성장이 가능할 것입니다.</p>';
+          }
+        }
+
+        // 결과 해석 추가
+        document.getElementById('result-interpretation').innerHTML = interpretation;
+      }
+
+      // 밸런스 휠 차트 생성
+      function createBalanceWheelChart(part1, part2, part3) {
+        const ctx = document.getElementById('balanceWheelChart').getContext('2d');
+
+        // 기존 차트가 있으면 파괴
+        if (window.balanceChart) {
+          window.balanceChart.destroy();
+        }
+
+        window.balanceChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['업무 전문성', '조직 내 관계', '삶의 균형'],
+            datasets: [
+              {
+                label: '나의 성장 밸런스',
+                data: [part1, part2, part3],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(54, 162, 235, 1)',
+              },
+            ],
+          },
+          options: {
+            scales: {
+              r: {
+                angleLines: {
+                  display: true,
+                },
+                suggestedMin: 0,
+                suggestedMax: 10,
+                ticks: {
+                  stepSize: 2,
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+          },
+        });
+      }
+
+      // 결과 저장
+      function saveResults() {
+        // 결과 데이터 수집
+        const part1Avg = document.getElementById('part1-score').textContent;
+        const part2Avg = document.getElementById('part2-score').textContent;
+        const part3Avg = document.getElementById('part3-score').textContent;
+
+        const resultData = {
+          date: new Date().toISOString(),
+          scores: {
+            업무전문성: parseFloat(part1Avg),
+            조직내관계: parseFloat(part2Avg),
+            삶의균형: parseFloat(part3Avg),
+          },
+          answers: {},
+        };
+
+        // 모든 응답 수집
+        document.querySelectorAll('.score-button.selected').forEach((button) => {
+          const questionId = button.getAttribute('data-question');
+          const value = parseInt(button.getAttribute('data-value'));
+          resultData.answers[questionId] = value;
+        });
+
+        // 로컬 스토리지에 저장
+        let savedResults = JSON.parse(localStorage.getItem('balanceWheelResults') || '[]');
+        savedResults.push(resultData);
+        localStorage.setItem('balanceWheelResults', JSON.stringify(savedResults));
+
+        alert('결과가 저장되었습니다. 나중에 다시 확인할 수 있습니다.');
+      }
+
+      // 페이지 로드 시 초기화
+      document.addEventListener('DOMContentLoaded', function () {
+        // 첫 화면만 표시, 나머지는 숨김
+        document.querySelectorAll('.section').forEach((section, index) => {
+          if (index === 0) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        // 초기 점수 설정
+        updateSectionScores();
+        updateTotalProgress();
+      });
+    </script>
+  </body>
+</html>

@@ -1138,7 +1138,7 @@
         document.getElementById('result-interpretation').innerHTML = interpretation;
       }
 
-      // 밸런스 휠 차트 생성
+      // 밸런스 휠 차트 생성 - 수정된 부분
       function createBalanceWheelChart(part1, part2, part3) {
         const ctx = document.getElementById('balanceWheelChart').getContext('2d');
 
@@ -1150,11 +1150,11 @@
         window.balanceChart = new Chart(ctx, {
           type: 'radar',
           data: {
-            labels: ['업무 전문성', '조직 내 관계', '삶의 균형'],
+            labels: ['업무 전문성', '삶의 균형', '조직 내 관계'], // 순서 변경
             datasets: [
               {
                 label: '나의 성장 밸런스',
-                data: [part1, part2, part3],
+                data: [part1, part3, part2], // 데이터 순서도 변경 (part2와 part3 위치 바뀜)
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 2,
